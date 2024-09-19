@@ -1,9 +1,8 @@
-# create_db.py
 from app import db, Employee, app
 
-# Create the database and add five employees
+# Create the databas
 with app.app_context():
-    db.create_all()  # Create tables if they don't exist
+    db.create_all()
 
     # Add five employees
     employees = [
@@ -14,7 +13,6 @@ with app.app_context():
         Employee(name='Charlie Green', unique_code='E005'),
     ]
 
-    # Add and commit the employees
     db.session.bulk_save_objects(employees)
     db.session.commit()
 
