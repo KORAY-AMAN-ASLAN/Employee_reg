@@ -1,0 +1,238 @@
+/* Reset and Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%; /* 1rem = 10px */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 1.6rem; /* Default font size 16px */
+    line-height: 1.6;
+    color: #333;
+    background-color: #f0f2f5;
+}
+
+/* Container */
+.container {
+    max-width: 120rem; /* 1200px */
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+}
+
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #fff;
+    background-color: #007BFF;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 1.6rem;
+    transition: background-color 0.3s;
+}
+
+.navbar a:hover {
+    background-color: #0056b3;
+}
+
+/* Sections Container */
+.sections-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 2rem;
+}
+
+/* Sections */
+section {
+    padding: 2rem;
+    border: 0.1rem solid #ccc;
+    border-radius: 0.5rem;
+    background-color: #fff;
+}
+
+section h2 {
+    font-size: 2.4rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Forms */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+label {
+    font-weight: bold;
+    font-size: 1.6rem;
+}
+
+input[type="text"] {
+    padding: 1rem;
+    border: 0.1rem solid #ccc;
+    border-radius: 0.4rem;
+    font-size: 1.6rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus {
+    border-color: #007BFF;
+    outline: none;
+    box-shadow: 0 0 0.5rem rgba(0, 123, 255, 0.3);
+}
+
+button {
+    padding: 1rem;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    font-size: 1.6rem;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+button:focus {
+    outline: none;
+    box-shadow: 0 0 0.5rem rgba(40, 167, 69, 0.3);
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+}
+
+thead {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+thead th {
+    padding: 1.2rem;
+    font-size: 1.6rem;
+    text-align: left;
+}
+
+tbody tr {
+    border-bottom: 0.1rem solid #ccc;
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+tbody td {
+    padding: 1.2rem;
+    font-size: 1.6rem;
+    text-align: left;
+}
+
+/* Responsive Table */
+@media (max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    thead {
+        display: none;
+    }
+
+    tbody tr {
+        margin-bottom: 1.5rem;
+    }
+
+    tbody td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+
+    tbody td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 1.2rem;
+        width: 45%;
+        padding-right: 1rem;
+        font-weight: bold;
+        text-align: left;
+    }
+}
+
+/* Navigation Link */
+nav a {
+    display: inline-block;
+    margin-bottom: 2rem;
+    font-size: 1.6rem;
+    color: #007BFF;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #0056b3;
+}
+
+/* Back to Top Button */
+#back-to-top {
+    display: none;
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 5rem;
+    height: 5rem;
+    background-color: #007BFF;
+    color: #fff;
+    font-size: 3rem;
+    text-align: center;
+    line-height: 5rem;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+#back-to-top:hover {
+    background-color: #0056b3;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .navbar {
+        flex-direction: column;
+    }
+
+    h1 {
+        font-size: 2.4rem;
+    }
+
+    section h2 {
+        font-size: 2rem;
+    }
+}

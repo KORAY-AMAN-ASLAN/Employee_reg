@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ employee.name }}'s Logs</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ employee.name }}'s Work Logs</h1>
+
+        <!-- Navigation Link -->
+        <nav>
+            <a href="/">&#8592; Back to Home</a>
+        </nav>
+
+        <!-- Work Logs Table -->
+        {% if logs %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Clock In</th>
+                    <th>Clock Out</th>
+                    <th>Hours Worked</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for log in logs %}
+                <tr>
+                    <td data-label="Clock In">{{ log.clock_in.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                    <td data-label="Clock Out">
+                        {% if log.clock_out %}
+                            {{ log.clock_out.strftime('%Y-%m-%d %H:%M:%S') }}
+                        {% else %}
+                            Still Working
+                        {% endif %}
+                    </td>
+                    <td data-label="Hours Worked">
+                        {% if log.clock_out %}
+                            {{ ((log.clock_out - log.clock_in).total_seconds() / 3600)|round(2) }} hours
+                        {% else %}
+                            N/A
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>No work logs available.</p>
+        {% endif %}
+    </div>
+
+    <!-- Back to Top Button -->
+    <div id="back-to-top" onclick="scrollToTop()">&#8679;</div>
+
+    <script>
+        // Show the "Back to Top" button when scrolling
+        window.onscroll = function() {
+            var backToTop = document.getElementById("back-to-top");
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTop.style.display = "block";
+            } else {
+                backToTop.style.display = "none";
+            }
+        };
+
+        // Scroll to the top of the page when "Back to Top" is clicked
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

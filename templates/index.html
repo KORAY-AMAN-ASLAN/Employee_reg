@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Time Tracking</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Employee Time Tracking System</h1>
+
+        <!-- Navigation Bar -->
+        <div class="navbar">
+            <a href="#clock-in-section">Clock In</a>
+            <a href="#clock-out-section">Clock Out</a>
+            <a href="#logs-section">View Logs</a>
+            <a href="#register-section">Register</a>
+        </div>
+
+        <!-- Sections Container -->
+        <div class="sections-container">
+            <!-- Clock In Form -->
+            <section id="clock-in-section">
+                <h2>Clock In</h2>
+                <form id="clockInForm" action="/clock-in" method="POST">
+                    <label for="unique_code_in">Enter your unique code to clock in:</label>
+                    <input type="text" id="unique_code_in" name="unique_code" placeholder="Enter Code" required>
+                    <button type="submit">Clock In</button>
+                </form>
+            </section>
+
+            <!-- Clock Out Form -->
+            <section id="clock-out-section">
+                <h2>Clock Out</h2>
+                <form id="clockOutForm" action="/clock-out" method="POST">
+                    <label for="unique_code_out">Enter your unique code to clock out:</label>
+                    <input type="text" id="unique_code_out" name="unique_code" placeholder="Enter Code" required>
+                    <button type="submit">Clock Out</button>
+                </form>
+            </section>
+
+            <!-- Check Work Logs -->
+            <section id="logs-section">
+                <h2>Check Your Work Logs</h2>
+                <form method="GET" onsubmit="return redirectToLogs()">
+                    <label for="unique_code_log">Enter your unique code:</label>
+                    <input type="text" id="unique_code_log" placeholder="Enter Code" required>
+                    <button type="submit">View Logs</button>
+                </form>
+            </section>
+
+            <!-- New Employee Registration Form -->
+            <section id="register-section">
+                <h2>Register a New Employee</h2>
+                <form id="registerForm" action="/register" method="POST">
+                    <label for="name">Enter your name:</label>
+                    <input type="text" id="name" name="name" placeholder="Enter Name" required>
+                    <label for="unique_code_reg">Enter a unique code:</label>
+                    <input type="text" id="unique_code_reg" name="unique_code" placeholder="Enter Unique Code" required>
+                    <button type="submit">Register</button>
+                </form>
+            </section>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <div id="back-to-top" onclick="scrollToTop()">&#8679;</div>
+
+    <script>
+        function redirectToLogs() {
+            let code = document.getElementById('unique_code_log').value;
+            if (code) {
+                window.location.href = '/logs/' + code;
+                return false;
+            }
+        }
+
+        // Show the "Back to Top" button when scrolling
+        window.onscroll = function() {
+            var backToTop = document.getElementById("back-to-top");
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTop.style.display = "block";
+            } else {
+                backToTop.style.display = "none";
+            }
+        };
+
+        // Scroll to the top of the page when "Back to Top" is clicked
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
