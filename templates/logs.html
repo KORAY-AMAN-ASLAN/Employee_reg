@@ -55,17 +55,14 @@
     <div id="back-to-top" onclick="scrollToTop()">&#8679;</div>
 
     <script>
-        // Show the "Back to Top" button when scrolling
         window.onscroll = function() {
-            var backToTop = document.getElementById("back-to-top");
+            let backToTop = document.getElementById("back-to-top");
             if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
                 backToTop.style.display = "block";
             } else {
                 backToTop.style.display = "none";
             }
         };
-
-        // Scroll to the top of the page when "Back to Top" is clicked
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
