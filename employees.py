@@ -1,10 +1,9 @@
 from app import db, Employee, app
 
-# Create the databas
+# DB
 with app.app_context():
     db.create_all()
 
-    # Add five employees
     employees = [
         Employee(name='John Doe', unique_code='E001'),
         Employee(name='Jane Smith', unique_code='E002'),
